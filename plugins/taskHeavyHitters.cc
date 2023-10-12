@@ -13,7 +13,7 @@ void TaskHeavyHitters::setUserPreferencesDirectly(int field, int numRows, int co
 void TaskHeavyHitters::configureDataPlane(DataPlane &dataPlane) {
   
   //cm_id = dataPlane.addHashFunctions(countMin.getHashInfo());
-  tHashInfo hashInfo =countMin.getHashInfo(); 
+  tHashInfo hashInfo = countMin.getHashInfo(); 
   int hashFnIndex =  dataPlane.getNumAddHashFunctions();
   for (int i = 0; i < hashInfo.numHashValues; i++) {
     hashInfo.hashFnIndexes.push_back(hashFnIndex++);
@@ -23,7 +23,7 @@ void TaskHeavyHitters::configureDataPlane(DataPlane &dataPlane) {
 
   int taskSize = 1;
   taskSize *= countMin.getSize();
-  task_id = dataPlane.setSRAMSize(taskSize);
+  task_id = dataPlane.setSRAMSize(taskSize); //创建数据结构
 
   // vector<tCounterInfo> counterInfos;
   tCounterInfo countMinCounterInfo = countMin.getCounterInfo();
@@ -33,9 +33,9 @@ void TaskHeavyHitters::configureDataPlane(DataPlane &dataPlane) {
 
   //  dataPlane.setPacketProcessing(task_id, counterInfos);
   for (int i = 0; i < countMinCounterInfo.numRows; i++) {
-    dataPlane.updateSRAM(ONELEVEL_FUNCTION, hashInfo.hashFnIndexes[i],\
-			 i, countMinCounterInfo.countersPerRow, \
-			 countMinCounterInfo.counterSize,  \
+    dataPlane.updateSRAM(ONELEVEL_FUNCTION, hashInfo.hashFnIndexes[i],  //设置数据结构的更新方式
+			 i, countMinCounterInfo.countersPerRow, 
+			 countMinCounterInfo.counterSize,  
 			 UPDATETYPE_INCREMENT);
   }
 }
@@ -45,7 +45,7 @@ void TaskHeavyHitters::configureDataPlane(DataPlane &dataPlane) {
   hashB = dataPlane.getHashB();
   }*/
 
-void TaskHeavyHitters::updateCountersFromDataPlane(DataPlane &dataPlane) {
+void TaskHeavyHitters::updateCountersFromDataPlane(DataPlane &dataPlane) { //获取结果
   sramCounters = dataPlane.getSRAM();
 }
 

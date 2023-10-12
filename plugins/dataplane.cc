@@ -56,7 +56,6 @@ int DataPlane::addHashFunction(const tHashInfo& hashInfo) {
 	writeReg(&nf2, OPENSKETCH_NUMHASHVALUES_REG, hashInfo.numHashValues);
 	writeReg(&nf2, OPENSKETCH_RANGE_REG, hashInfo.range);
 	numAddHashFunction++;
-  
 }
 
 int DataPlane::addRevHashFunctions(const tHashInfo& hashInfo) {
