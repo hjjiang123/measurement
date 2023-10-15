@@ -66,11 +66,13 @@ int DataPlane::addRevHashFunctions(const tHashInfo& hashInfo) {
 	numAddRevHashFunctions++;
 }
 
-int DataPlane::setSRAMSize(int size){
+//设置内存空间大小
+int DataPlane::setSRAMSize(int size){  
 	writeReg(&nf2, OPENSKETCH_SRAM_SIZE_REG,size);
 	SramSize = size;
 }
 
+//设置内存数据结构和更新方式（每一行）
 int DataPlane::updateSRAM(int addressFnIndex, int hashFnIndex,  int row, int countersPerRow, int counterSize, int updateTypeIndex) {
 	writeReg(&nf2, OPENSKETCH_ADDRFUNC_LIST_REG, addressFnIndex);
 	writeReg(&nf2, OPENSKETCH_HASH_IDX_REG, hashFnIndex);

@@ -1,8 +1,8 @@
 #ifndef __SKETCHBITMAP_H
 #define __SKETCHBITMAP_H
-#include "plugin.h"
+#include "common.h"
 
-class SketchBitmap : public AbstractPlugin {
+class SketchBitmap {
   tHashInfo hashInfo;
   tCounterInfo counterInfo;
 
