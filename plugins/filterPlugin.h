@@ -1,3 +1,5 @@
+#ifndef __SAMPLE_PLUGIN_H
+#define __SAMPLE_PLUGIN_H
 #include "plugin.h"
 
 const uint32 fields[5]={};
@@ -17,14 +19,16 @@ private:
 public:
     FixedFilterPlugin():_count(0){};
     ~FixedFilterPlugin(){};
+    
     void addCondition(uint32 field, uint32 value){
         _conditions[_count++] = make_pair(field, value);
     };
-    bool filter(void * packet, uint16 length){
+    void setup(){};
+    bool process(IPHeader * packet, uint16 length){
         /*...............*/
-        IPHeader * iph = (IPHeader *)packet;
-        
-        
+        IPHeader * iph = (IPHeader *)packet; 
+        return false;
     }
 
 };
+#endif

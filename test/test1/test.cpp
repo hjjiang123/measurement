@@ -8,9 +8,10 @@ int main(){
     const char* pointerToSomeBytes = "fefedfde";
     myhash.add((void *)pointerToSomeBytes,     32);
     // and compute hash:
-    uint32_t result = myhash.hash();
-
+    uint32_t result1 = myhash.hash();
+    myhash.add((void *)pointerToSomeBytes,     32);
+    uint32_t result2 = myhash.hash();
     // or all of the above in one single line:
-    uint32_t result2 = XXHash32::hash((void *)pointerToSomeBytes, 32, myseed,17);
+    cout<<result1<<endl;
     cout<<result2<<endl;
 }

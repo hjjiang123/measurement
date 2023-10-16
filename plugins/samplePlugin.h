@@ -9,8 +9,13 @@ private:
 public:
     UnionSamplePlugin(uint32 ratio):_ratio(ratio),_cur(0){};
     ~UnionSamplePlugin(){};
-
-    bool sample(){
+    
+    void setup(){
+        if(getNextPlugin()){
+            setupNextPlugin();
+        }
+    };
+    bool process(){
         if(_cur == 0){
             resetRatio();
             return true;

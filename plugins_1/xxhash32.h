@@ -32,9 +32,11 @@ public:
         state[1] = seed + Prime2;
         state[2] = seed;
         state[3] = seed - Prime1;
+        
         bufferSize = 0;
         totalLength = 0;
     }
+    
 
     /// add a chunk of bytes
     /** @param  input  pointer to a continuous block of data
@@ -147,6 +149,7 @@ public:
         hasher.add(input, length);
         return hasher.hash()>>(32-targetlength);
     }
+    
 
 private:
     /// magic constants :-)
@@ -161,6 +164,7 @@ private:
 
     // internal state and temporary buffer
     uint32_t state[4]; // state[2] == seed if totalLength < MaxBufferSize
+    
     unsigned char buffer[MaxBufferSize];
     unsigned int bufferSize;
     uint64_t totalLength;
