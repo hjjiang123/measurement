@@ -11,9 +11,9 @@ public:
     ~UnionSamplePlugin(){};
     
     void setup(){
-        if(getNextPlugin()){
-            setupNextPlugin();
-        }
+        // if(getNextPlugin()){
+        //     setupNextPlugin();
+        // }
     };
     bool process(){
         if(_cur == 0){

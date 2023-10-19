@@ -10,13 +10,9 @@ private:
 
 public:
     Plugin() { ++_plugin_num; };
-
     ~Plugin() { --_plugin_num; };
-
     virtual void setup() = 0;
-
     virtual bool process(IPHeader *iph, uint16 length, void **argv) = 0;
-
     void setNextPlugin(Plugin *plg)
     {
         _nextPlugin = plg;
